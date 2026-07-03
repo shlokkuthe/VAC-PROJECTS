@@ -1,0 +1,95 @@
+/* ─── OVERLAY ─────────────────────────────── */
+.detailsOverlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.82);
+  backdrop-filter: blur(10px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1800; padding: 16px;
+  animation: fadeIn .2s ease;
+}
+
+/* ─── MODAL ──────────────────────────────── */
+.detailsModal {
+  width: 860px; max-width: 100%; max-height: 90vh;
+  overflow-y: auto;
+  background: #131320;
+  border: 1px solid #2a2a2a;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 40px 100px rgba(0,0,0,.8);
+  animation: slideUp .3s cubic-bezier(.34,1.56,.64,1);
+  scrollbar-width: thin;
+}
+.detailsCloseBtn {
+  position: absolute; top:14px; right:16px;
+  width:34px; height:34px; border:none; border-radius:50%;
+  background:rgba(255,255,255,.07); color:#888; font-size:14px;
+  cursor:pointer; display:flex; align-items:center; justify-content:center;
+  z-index:10; font-family:inherit; transition:.2s;
+}
+.detailsCloseBtn:hover { background:#e50914; color:#fff; transform:rotate(90deg); }
+
+/* ─── LOADING ────────────────────────────── */
+.detailsLoading { padding:60px; text-align:center; color:#666; font-size:16px; }
+
+/* ─── TWO-COL LAYOUT ─────────────────────── */
+.detailsContent {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 0;
+}
+@media(max-width:640px){
+  .detailsContent { grid-template-columns: 1fr; }
+}
+
+/* ─── POSTER COLUMN ──────────────────────── */
+.detailsPosterCol {
+  position: relative;
+  background: #0c0c18;
+  padding: 28px;
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+  border-right: 1px solid #1e1e1e;
+}
+.detailsPosterCol img {
+  width: 100%; border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.6);
+  object-fit: cover;
+}
+.detailsFavBtn {
+  width: 100%; padding: 11px;
+  border: 1px solid rgba(229,9,20,.4);
+  border-radius: 10px;
+  background: rgba(229,9,20,.1);
+  color: #e05050; font-size: 14px; font-weight: 600;
+  cursor: pointer; font-family: inherit; transition: .2s;
+}
+.detailsFavBtn:hover { background:rgba(229,9,20,.25); color:#fff; }
+.detailsFavBtn.detailsFavActive { background:#e50914; border-color:#e50914; color:#fff; }
+
+/* ─── INFO COLUMN ────────────────────────── */
+.detailsInfoCol { padding: 32px 28px; overflow-y: auto; }
+.detailsInfoCol h1 { font-size:26px; font-weight:800; color:#fff; margin-bottom:14px; line-height:1.2; }
+
+/* Badges */
+.detailsBadges { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:22px; }
+.badge {
+  padding:5px 12px; border-radius:20px;
+  background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.1);
+  font-size:12px; color:#bbb;
+}
+.badgeRating { background:rgba(251,191,36,.12); border-color:rgba(251,191,36,.35); color:#fbbf24; }
+.badgeType   { background:rgba(229,9,20,.12);   border-color:rgba(229,9,20,.35);   color:#e50914; }
+
+/* Info grid */
+.detailsGrid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:12px; margin-bottom:20px;
+}
+.dItem span { font-size:10.5px; text-transform:uppercase; letter-spacing:.5px; color:#666; }
+.dItem p    { font-size:13.5px; color:#ccc; margin-top:3px; }
+
+/* Section */
+.detailsSection { margin-bottom:18px; }
+.detailsSection h4 { font-size:11.5px; text-transform:uppercase; letter-spacing:.5px; color:#e50914; margin-bottom:5px; }
+.detailsSection p  { font-size:14px; color:#aaa; }
+.plotText { line-height:1.65; }

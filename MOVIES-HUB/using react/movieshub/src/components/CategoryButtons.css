@@ -1,0 +1,15 @@
+.catWrap {
+  width: 92%; margin: 0 auto 28px;
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+.catBtn {
+  padding: 9px 18px; border-radius: 30px;
+  border: 1px solid #2a2a2a;
+  background: #161616; color: #888;
+  font-size: 13.5px; font-weight: 500;
+  cursor: pointer; font-family: inherit;
+  display: flex; align-items: center; gap: 6px;
+  transition: .2s;
+}
+.catBtn:hover        { border-color: #e50914; color: #fff; background: rgba(229,9,20,.07); }
+.catBtn.catBtnActive { background: #e50914; border-color: #e50914; color: #fff; }

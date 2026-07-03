@@ -1,0 +1,122 @@
+/* ─── OVERLAY ─────────────────────────────── */
+.feedbackOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.78);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 16px;
+  animation: fadeIn .2s ease;
+}
+
+/* ─── MODAL ──────────────────────────────── */
+.feedbackModal {
+  width: 620px;
+  max-width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: linear-gradient(160deg,#14141f,#0f0f1a);
+  border: 1px solid rgba(229,9,20,.18);
+  border-radius: 20px;
+  padding: 36px 34px 32px;
+  position: relative;
+  box-shadow: 0 36px 90px rgba(0,0,0,.7);
+  animation: slideUp .3s cubic-bezier(.34,1.56,.64,1);
+  scrollbar-width: thin;
+}
+
+/* ─── CLOSE BTN ──────────────────────────── */
+.fbCloseBtn {
+  position: absolute;
+  top: 14px; right: 16px;
+  width: 34px; height: 34px;
+  border: none; border-radius: 50%;
+  background: rgba(255,255,255,.07);
+  color: #888; font-size: 14px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-family: inherit; transition: .2s;
+}
+.fbCloseBtn:hover { background:#e50914; color:#fff; transform:rotate(90deg); }
+
+/* ─── HEADER ─────────────────────────────── */
+.fbHeader { margin-bottom: 22px; }
+.fbHeader h2 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 5px; }
+.fbHeader p  { font-size: 13px; color: #666; }
+
+/* ─── ERROR ──────────────────────────────── */
+.fbError {
+  background: rgba(229,9,20,.12);
+  border: 1px solid rgba(229,9,20,.35);
+  color: #ff6b7a;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+/* ─── FORM ───────────────────────────────── */
+.fbForm { display: flex; flex-direction: column; gap: 16px; }
+
+.fbRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+@media(max-width:520px){ .fbRow { grid-template-columns: 1fr; } }
+
+.fbField { display: flex; flex-direction: column; gap: 6px; }
+.fbField label {
+  font-size: 11.5px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .5px; color: #777;
+}
+
+.fbField input,
+.fbField select,
+.fbField textarea {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 14px;
+  font-family: inherit;
+  padding: 12px 14px;
+  outline: none;
+  transition: .2s;
+  resize: vertical;
+}
+.fbField input::placeholder,
+.fbField textarea::placeholder { color: #444; }
+.fbField select option { background: #1a1a2e; }
+.fbField input:focus,
+.fbField select:focus,
+.fbField textarea:focus {
+  border-color: #e50914;
+  background: rgba(229,9,20,.06);
+  box-shadow: 0 0 0 3px rgba(229,9,20,.1);
+}
+
+/* ─── SUBMIT BTN ─────────────────────────── */
+.fbSubmitBtn {
+  padding: 13px;
+  border: none; border-radius: 11px;
+  background: linear-gradient(135deg,#e50914,#b20710);
+  color: #fff; font-size: 15px; font-weight: 700;
+  cursor: pointer; font-family: inherit;
+  transition: .2s;
+  box-shadow: 0 6px 20px rgba(229,9,20,.35);
+  margin-top: 4px;
+}
+.fbSubmitBtn:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(229,9,20,.5); }
+
+/* ─── SUCCESS SCREEN ─────────────────────── */
+.fbSuccess {
+  text-align: center;
+  padding: 30px 10px;
+}
+.fbSuccessIcon { font-size: 64px; margin-bottom: 16px; }
+.fbSuccess h2  { font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+.fbSuccess p   { font-size: 14px; color: #888; line-height: 1.6; margin-bottom: 28px; }

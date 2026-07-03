@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+/* ─── RESET ──────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0d0d0d;
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+}
+
+/* ─── LAYOUT ─────────────────────────────── */
+.mainContent {
+  min-height: calc(100vh - 70px);
+}
+
+/* ─── SHARED PAGE HERO ───────────────────── */
+.pageHero {
+  padding: 64px 40px 52px;
+  text-align: center;
+  background: linear-gradient(170deg, #1a0510 0%, #0d0d0d 100%);
+  border-bottom: 1px solid #1f1f1f;
+  position: relative;
+  overflow: hidden;
+}
+.pageHero::before {
+  content: "";
+  position: absolute;
+  top: -60px; left: 50%;
+  transform: translateX(-50%);
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(229,9,20,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.pageHero h1 {
+  font-size: 44px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+}
+.pageHero p  {
+  font-size: 16px;
+  color: #777;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ─── SECTION TITLE ──────────────────────── */
+.sectionTitle {
+  width: 92%;
+  margin: 0 auto 28px;
+}
+.sectionTitle h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+  border-left: 4px solid #e50914;
+  padding-left: 14px;
+}
+
+/* ─── EMPTY / LOADING STATES ─────────────── */
+.emptyState {
+  text-align: center;
+  padding: 80px 20px;
+  color: #444;
+  grid-column: 1/-1;
+}
+.emptyState .emptyIcon { font-size: 70px; margin-bottom: 18px; opacity: .5; }
+.emptyState h3 { font-size: 22px; color: #555; margin-bottom: 8px; }
+.emptyState p  { font-size: 14px; }
+
+.loadingState {
+  text-align: center;
+  padding: 80px 20px;
+  font-size: 18px;
+  color: #666;
+}
+
+/* ─── MOVIE GRID ─────────────────────────── */
+.movieGrid {
+  width: 92%;
+  margin: 0 auto 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 28px;
+}
+
+/* ─── SCROLLBAR ──────────────────────────── */
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb { background: #e50914; border-radius: 3px; }
+
+/* ─── RESPONSIVE ─────────────────────────── */
+@media (max-width: 768px) {
+  .pageHero h1 { font-size: 30px; }
+  .pageHero    { padding: 44px 20px 36px; }
+  .movieGrid   { grid-template-columns: repeat(2, 1fr); gap: 16px; width: 96%; }
+}
+@media (max-width: 480px) {
+  .movieGrid { grid-template-columns: 1fr; }
+}

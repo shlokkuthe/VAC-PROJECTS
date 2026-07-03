@@ -1,0 +1,144 @@
+/* ─── OVERLAY ─────────────────────────────── */
+.authOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 16px;
+  animation: fadeIn .2s ease;
+}
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+/* ─── MODAL CARD ─────────────────────────── */
+.authModal {
+  width: 420px;
+  max-width: 100%;
+  background: linear-gradient(160deg, #16162a, #12121f);
+  border: 1px solid rgba(229,9,20,.2);
+  border-radius: 20px;
+  padding: 36px 32px 28px;
+  position: relative;
+  box-shadow: 0 32px 80px rgba(0,0,0,.7), 0 0 60px rgba(229,9,20,.07);
+  animation: slideUp .3s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes slideUp {
+  from { transform:scale(.86) translateY(-24px); opacity:0; }
+  to   { transform:scale(1)   translateY(0);     opacity:1; }
+}
+
+/* ─── CLOSE BTN ──────────────────────────── */
+.authCloseBtn {
+  position: absolute;
+  top: 14px; right: 16px;
+  width: 34px; height: 34px;
+  border: none; border-radius: 50%;
+  background: rgba(255,255,255,.07);
+  color: #888;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: .2s;
+  font-family: inherit;
+}
+.authCloseBtn:hover { background:#e50914; color:#fff; transform:rotate(90deg); }
+
+/* ─── HEADER ─────────────────────────────── */
+.authHeader { text-align: center; margin-bottom: 22px; }
+.authLogo   { font-size: 40px; margin-bottom: 10px; }
+.authHeader h2 {
+  font-size: 24px; font-weight: 700; margin-bottom: 4px;
+  background: linear-gradient(135deg,#fff 30%,#e50914);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.authHeader p { font-size: 13px; color: #666; }
+
+/* ─── TABS ───────────────────────────────── */
+.authTabs {
+  display: flex;
+  background: rgba(255,255,255,.05);
+  border-radius: 10px;
+  padding: 4px;
+  margin-bottom: 20px;
+}
+.authTab {
+  flex: 1;
+  padding: 9px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #666;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: .2s;
+}
+.authTab:hover          { color: #aaa; }
+.authTab.authTabActive  { background: #e50914; color: #fff; box-shadow: 0 4px 14px rgba(229,9,20,.4); }
+
+/* ─── ALERTS ─────────────────────────────── */
+.authAlert {
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+.authAlertError   { background:rgba(229,9,20,.12); border:1px solid rgba(229,9,20,.35); color:#ff6b7a; animation:shake .3s ease; }
+.authAlertSuccess { background:rgba(34,197,94,.12); border:1px solid rgba(34,197,94,.35); color:#4ade80; }
+@keyframes shake {
+  0%,100%{transform:translateX(0)}
+  25%{transform:translateX(-5px)}
+  75%{transform:translateX(5px)}
+}
+
+/* ─── FORM ───────────────────────────────── */
+.authForm { display:flex; flex-direction:column; gap:14px; }
+
+.authField { display:flex; flex-direction:column; gap:5px; }
+.authField label {
+  font-size: 11.5px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .5px; color: #777;
+}
+.authField input {
+  padding: 12px 15px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: .2s;
+}
+.authField input::placeholder { color: #444; }
+.authField input:focus {
+  border-color: #e50914;
+  background: rgba(229,9,20,.06);
+  box-shadow: 0 0 0 3px rgba(229,9,20,.12);
+}
+
+/* ─── SUBMIT BTN ─────────────────────────── */
+.authSubmitBtn {
+  margin-top: 4px;
+  padding: 13px;
+  border: none;
+  border-radius: 11px;
+  background: linear-gradient(135deg,#e50914,#b20710);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: .2s;
+  box-shadow: 0 6px 20px rgba(229,9,20,.35);
+}
+.authSubmitBtn:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(229,9,20,.5); }
+
+/* ─── SWITCH HINT ────────────────────────── */
+.authSwitchHint { margin-top: 18px; text-align: center; font-size: 13px; color: #555; }
+.authSwitchLink { color: #e50914; cursor: pointer; font-weight: 600; }
+.authSwitchLink:hover { text-decoration: underline; }
