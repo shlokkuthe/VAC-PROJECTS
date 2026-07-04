@@ -1,0 +1,269 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 60px;
+    transition: background 0.35s, box-shadow 0.35s, border-color 0.35s;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid transparent;
+}
+
+body[data-theme="dark"] .navbar {
+    background: rgba(15, 23, 42, 0.75);
+}
+
+@media (max-width: 900px) {
+    .navbar {
+        padding: 0 24px;
+    }
+}
+
+.scrolled {
+    border-bottom-color: var(--border);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+/* Logo */
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primary);
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+}
+
+/* Nav Links */
+.links {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+}
+
+.links a {
+    font-size: 15px;
+    font-weight: 500;
+    position: relative;
+    color: var(--text);
+    transition: color 0.2s;
+}
+
+.links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s;
+}
+
+.links a:hover::after,
+.links a.active::after {
+    width: 100%;
+}
+
+.links a.active {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* Actions */
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Auth Buttons */
+.authButtons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.loginLink {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.loginLink:hover {
+    background: var(--border);
+}
+
+.signupLink {
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    background: var(--primary);
+    padding: 10px 22px;
+    border-radius: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+}
+
+.signupLink:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.45);
+}
+
+/* Admin button */
+.adminBtn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(249, 115, 22, 0.12);
+    color: var(--accent);
+    font-size: 16px;
+    transition: transform 0.2s;
+}
+
+.adminBtn:hover {
+    transform: scale(1.1);
+}
+
+/* Profile Avatar */
+.profile {
+    position: relative;
+    cursor: pointer;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary);
+    transition: transform 0.2s;
+}
+
+.avatar:hover {
+    transform: scale(1.06);
+}
+
+/* Dropdown */
+.dropdown {
+    position: absolute;
+    top: 52px;
+    right: 0;
+    min-width: 210px;
+    background: var(--card);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    animation: dropdownFadeIn 0.2s ease;
+}
+
+@keyframes dropdownFadeIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdownHeader {
+    padding: 16px 18px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.dropdownHeader strong {
+    font-size: 15px;
+}
+
+.dropdownHeader small {
+    font-size: 13px;
+    color: var(--subText);
+}
+
+.dropdownDivider {
+    height: 1px;
+    background: var(--border);
+    margin: 4px 0;
+}
+
+.dropdown a,
+.dropdown button {
+    display: block;
+    width: 100%;
+    padding: 12px 18px;
+    border: none;
+    background: transparent;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.dropdown a:hover,
+.dropdown button:hover {
+    background: rgba(37, 99, 235, 0.07);
+    color: var(--primary);
+}
+
+.dropdown button {
+    color: #ef4444;
+    font-weight: 600;
+}
+
+.dropdown button:hover {
+    background: rgba(239, 68, 68, 0.08);
+    color: #ef4444;
+}
+
+/* Mobile button */
+.mobile {
+    display: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--text);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .links {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: var(--card);
+        flex-direction: column;
+        padding: 20px 30px;
+        gap: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        border-bottom: 1px solid var(--border);
+        transform: translateY(-110%);
+        transition: transform 0.35s ease;
+    }
+
+    .links.active {
+        transform: translateY(0);
+    }
+
+    .mobile {
+        display: flex;
+        align-items: center;
+    }
+
+    .authButtons .loginLink {
+        display: none;
+    }
+}
