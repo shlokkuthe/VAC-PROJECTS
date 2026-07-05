@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
     FaPlane, FaPlus, FaSearch, FaFilter
 } from "react-icons/fa";
@@ -22,6 +22,7 @@ const TRIP_TYPES = ["Adventure", "Business", "Leisure", "Honeymoon", "Family", "
 
 const Trips = () => {
     const { user } = useAuth();
+    const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState(user ? "my-trips" : "explore");
     const [trips, setTrips] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -117,6 +118,11 @@ const Trips = () => {
         } catch (error) { toast.error(error.message); }
     };
 
+    const handleEdit = (tripId, e) => {
+        e.preventDefault(); e.stopPropagation();
+        navigate(`/trips/${tripId}?edit=true`);
+    };
+
     const tabs = user ? ["my-trips", "explore", "wishlist"] : ["explore"];
 
     return (
@@ -200,8 +206,9 @@ const Trips = () => {
                 <>
                     <div className={styles.grid}>
                         {trips.map((trip) => {
-                            const isOwner = String(trip.user?._id || trip.user) === user?.id;
-                            const isLiked = trip.wishlistedBy?.includes(user?.id);
+                            const currentUserId = user?._id || user?.id;
+                            const isOwner = String(trip.user?._id || trip.user) === String(currentUserId);
+                            const isLiked = trip.wishlistedBy?.includes(currentUserId);
 
                             return (
                                 <TripCard
@@ -214,6 +221,7 @@ const Trips = () => {
                                     onCancel={(id, e) => { e.preventDefault(); e.stopPropagation(); setConfirmCancel(id); }}
                                     onRestore={handleRestore}
                                     onDelete={(id, e) => { e.preventDefault(); e.stopPropagation(); setConfirmDelete(id); }}
+                                    onEdit={handleEdit}
                                 />
                             );
                         })}

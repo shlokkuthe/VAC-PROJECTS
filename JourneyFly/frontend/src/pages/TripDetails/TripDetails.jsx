@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef, useCallback } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from "react-leaflet";
 import L from "leaflet";
@@ -38,6 +38,7 @@ const userIcon = new L.DivIcon({
     html: `<div style="width:20px;height:20px;border-radius:50%;background:#2563EB;border:3px solid white;box-shadow:0 0 0 3px rgba(37,99,235,0.3)"></div>`,
     iconSize: [20, 20],
     iconAnchor: [10, 10],
+// ... (omitting comment line to avoid matches mismatch)
 });
 
 const EXPENSE_CATEGORIES = [
@@ -70,6 +71,7 @@ const TIME_ICONS = { Morning: "🌅", Afternoon: "☀️", Evening: "🌆", Nigh
 const TripDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
     const { user } = useAuth();
 
     const [loading, setLoading] = useState(true);
@@ -78,7 +80,7 @@ const TripDetails = () => {
     const [weatherLoading, setWeatherLoading] = useState(true);
     const [reviews, setReviews] = useState([]);
     const [newRating, setNewRating] = useState(5);
-    const [isEditing, setIsEditing] = useState(false);
+    const [isEditing, setIsEditing] = useState(searchParams.get("edit") === "true");
     const [coords, setCoords] = useState(null);
     const [userCoords, setUserCoords] = useState(null);
     const [confirmAction, setConfirmAction] = useState(null); // { type: 'cancel'|'delete' }
@@ -293,7 +295,8 @@ const TripDetails = () => {
     if (loading) return <div className="global-loader-container"><div className="global-loader" /></div>;
 
     const { trip, expenses, summary } = data;
-    const isOwner = String(trip.user?._id || trip.user) === user?.id;
+    const currentUserId = user?._id || user?.id;
+    const isOwner = String(trip.user?._id || trip.user) === String(currentUserId);
     const percentSpent = summary.totalBudget > 0 ? Math.min((summary.totalExpense / summary.totalBudget) * 100, 100) : 0;
     const budgetColor = percentSpent >= 100 ? "var(--danger)" : percentSpent >= 80 ? "var(--warning)" : "var(--success)";
 
